@@ -1,0 +1,6 @@
+<label for="customInput">Custom Input</label>
+<input type="text" class="form-control" id="customInput" [(ngModel)]="customInput" (ngModelChange)="onChange($event)" (blur)="onTouch()">
+<h5 class="mb-1 mt-2">
+    Custom Input Value in custom.component
+</h5>
+<!-- {{customInput}} -->
