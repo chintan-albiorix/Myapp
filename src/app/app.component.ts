@@ -12,11 +12,11 @@ export class AppComponent{
   form =  this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    customInputControl: [''],
+    customFormControl: [''],
   });
 
   submit(){
-    console.log(this.form.value)
+    this.form.markAllAsTouched();
   }
   
 

@@ -1,6 +1,6 @@
-<label for="customInput">Custom Input</label>
-<input type="text" class="form-control" id="customInput" [(ngModel)]="customInput" (ngModelChange)="onChange($event)" (blur)="onTouch()">
-<h5 class="mb-1 mt-2">
-    Custom Input Value in custom.component
-</h5>
-<!-- {{customInput}} -->
+<div class="row mt-3 align-items-center">
+    <label for="customInput" class="col-sm-3">Custom Input:</label>
+    <div class="col">
+    <input type="text" class="form-control" id="customInput" [(ngModel)]="customInput"
+        (ngModelChange)="onChange($event)" (blur)="onTouch()"></div>
+</div>

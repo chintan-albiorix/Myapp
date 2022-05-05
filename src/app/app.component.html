@@ -1,31 +1,49 @@
 <div class="container">
-    <div class="row">
+    <div class="row vh-100 align-items-center">
         <div class="col-md-3"></div>
-        <div class="col-md-6 mt-3">
-            <div class="card p-3 shadow">
+        <div class="col-md-6">
+            <div class="card p-2 shadow">
                 <form [formGroup]="form" class="p-3">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input formControlName="name" id="name" type="text" class="form-control">
+                    <h4 class="text-center">Control Value Accessor with Custom Input</h4>
+                    <div class="form-group mt-4 row align-items-center">
+                        <label for="name" class="col-sm-3">Name :</label>
+                        <div class="col">
+                            <input formControlName="name" id="name" type="text" class="form-control">
+                            <div *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched"
+                                class="alert alert-danger mt-2 p-2">
+                                Please Enter Name
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input formControlName="email" id="email" type="text" class="form-control">
+                    <div class="form-group mt-3 row align-items-center">
+                        <label for="email" class="col-sm-3">Email</label>
+                        <div class="col">
+                            <input formControlName="email" id="email" type="text" class="form-control">
+                            <div *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched"
+                                class="alert alert-danger mt-2 p-2">
+                                Please Enter Email
+                            </div>
+                        </div>
                     </div>
 
-                    <app-custom-input formControlName="customInputControl" id="customInputControl"></app-custom-input>
-                    <div *ngIf="form.get('customInputControl')?.hasError('invalid') && form.get('customInputControl')?.hasError('touched')"
-                        class="alert alert-danger">
-                        Please Enter
+                    <app-custom-input formControlName="customFormControl"></app-custom-input>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col">
+                            <div *ngIf="form.get('customFormControl')?.hasError('invalidInput') && form.get('customFormControl')?.touched"
+                                class="alert alert-danger mt-2 p-2">
+                                Please Enter details
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="invalid-feedback" *ngIf="(form.controls.customInputControl.touched || form.controls.customInputControl?.dirty) && form.controls.customInputControl?.invalid">
-                        Custrom Input Required
-                  </div> -->
-                    <button class="btn btn-primary" (click)="submit()" [disabled]="form.invalid && form.get('customInputControl')?.value">Submit</button>
+
+                    <div class="d-flex justify-content-center mt-2">
+                        <button class="btn btn-primary" (click)="submit()">Submit</button>
+                    </div>
                 </form>
 
-                <h5 class="mb-1 mt-2">Variable Value in app.component</h5>
-                {{ form.get('customInputControl')?.value }}
+                <!-- <h5 class="mb-1 mt-2" *ngIf="form.get('customInputControl')?.value != null">Variable Value in app.component</h5> -->
+                <!-- {{ form.get('customInputControl')?.value }} -->
             </div>
         </div>
         <div class="col-md-3"></div>
